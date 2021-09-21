@@ -13,7 +13,7 @@ miscRouter.use((req, res, next)=>{
 }) ; 
 
 
-miscRouter.get('/deploy', function (req, res, next){
+miscRouter.get('/deploy', async function (req, res, next){
    
     const code = fs.readFileSync("./SmartContracts/ticket.scilla").toString();
     const init = [
@@ -40,7 +40,7 @@ miscRouter.get('/deploy', function (req, res, next){
         }
     ]
 
-    const confirmedTxn = deploySmartContract(code, init) ;
+    const confirmedTxn = await deploySmartContract(code, init) ;
     if (confirmedTxn){
         res.json({'success': 1, 'error' : null, 'data': {confiredTxn : confirmedTxn}}) 
     } else {

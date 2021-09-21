@@ -1,22 +1,18 @@
+
 const {zilliqa, address, config} = require("../zil_wallet/zil") ;
 
-module.exports = async function mint(SCAddress, toAddress, tokenURI) {
+module.exports = async function retrieve(SCAddress, tokenID) {
 
     const nftAddr = toBech32Address(SCAddress)//("79d662e621c08521a20f80e953417d981ddef0a6");
     try {
         const contract = zilliqa.contracts.at(nftAddr);
         const callTx = await contract.callWithoutConfirm(
-            'mint',
+            'retrieve_ticket',
             [
                 {
-                    vname: 'to',
-                    type: 'ByStr20',
-                    value: `${toAddress}`,
-                },
-                {
-                    vname: 'token_uri',
-                    type: 'String',
-                    value: `${tokenURI}`,
+                    vname: 'token_ID',
+                    type: 'uint256',
+                    value: tokenID,
                 }
             ],
             {
