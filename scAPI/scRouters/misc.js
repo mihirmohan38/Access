@@ -13,7 +13,7 @@ miscRouter.use((req, res, next)=>{
 }) ; 
 
 
-miscRouter.get('/deploy', async function (req, res, next){
+miscRouter.post('/deploy', async function (req, res, next){
    
     const code = fs.readFileSync("./SmartContracts/ticket.scilla").toString();
     const init = [

@@ -1,7 +1,8 @@
 
 const express = require('express') ; 
 const fs = require('fs');
-const  mint  = require("../scFunctions/mint") ; 
+const  mint  = require("../scFunctions/mint") ;
+const retrieve = require("../scFunctions/retrieve") ;  
 const {zilliqa, address, config} = require("../zil_wallet/zil") ; 
 
 
